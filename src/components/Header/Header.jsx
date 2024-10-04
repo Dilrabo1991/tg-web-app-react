@@ -9,7 +9,7 @@ function Header() {
   return (
     <div className={'header'}>
       <Button onClick={onClose}>Yopish</Button>
-      <span className={'user-name'}>{user?.first_name}</span>
+      <span className={'user-name'  }>{user?.first_name}</span>
     </div>
   )
 }
