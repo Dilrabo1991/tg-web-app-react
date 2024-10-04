@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import { useTelegram } from './components/Hooks/useTelegram';
+import Header from './components/Header/Header';
+import Button from './components/Button/Button';
 function App() {
-  const {tg, onClose, onToggleButton}= useTelegram()
+  const {tg,  onToggleButton}= useTelegram()
 
 useEffect(() => {
   tg.ready()
@@ -10,7 +12,8 @@ useEffect(() => {
 
   return (
     <div>
-      Web App
+    
+      <Header />
       <button onClick= {onToggleButton}>Toggle</button>
     </div>
   )
