@@ -1,4 +1,4 @@
 [[redirects]]
 form = "/*"
-to ="index.html"
+to ="/index.html"
 status = 301
