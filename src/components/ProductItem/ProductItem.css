@@ -1,0 +1,31 @@
+.productClass {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--tg-theme-button-color);
+  padding: 15px;
+  margin-bottom: 14px;
+  margin-right: 14px;
+}
+.img {
+  width: 90%;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 8px;
+  background: var(--tg-theme-button-color);
+}
+.title {
+  font-size: large;
+  color: var(--tg-theme-button-color);
+}
+.description {
+  font-size: 0.8em;
+  color: var(--tg-theme-button-color);
+}
+.addButton {
+  width: 100%;
+  color: var(--tg-theme-button-color);
+}
+.price {
+  color: var(--tg-theme-button-color);
+}

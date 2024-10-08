@@ -14,7 +14,7 @@ useEffect(() => {
 
 
   return (
-    <div>
+    <div className="App">
       <Header />
       <Routes>
         <Route index element={<ProductList />} />

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import './Form.css';
-import { useTelegram } from '../Hooks/useTelegram';
+import React, { useCallback, useEffect, useState } from "react";
+import "./Form.css";
+import { useTelegram } from "../Hooks/useTelegram";
 
 function Form() {
-  const [country, setCountry] = useState('');
-  const [street, setStreet] = useState('');
-  const [subgact, setSubgact] = useState('physical');
+  const [country, setCountry] = useState("");
+  const [street, setStreet] = useState("");
+  const [subgact, setSubgact] = useState("physical");
   const { tg } = useTelegram();
 
   const onChangeCountry = (e) => {
@@ -20,10 +20,26 @@ function Form() {
     setSubgact(e.target.value);
   };
 
+  const onSendData = useCallback(() => {
+    const data = {
+      country,
+      street,
+      subgact,
+    };
+    tg.sendData(JSON.stringify(data));
+  }, [country, street, subgact]);
+
+  useEffect(() => {
+    tg.onEvent("mainButtonClicked", onSendData);
+    return () => {
+      tg.offEvent("mainButtonClicked", onSendData);
+    };
+  }, [onSendData]);
+
   // Set MainButton text
   useEffect(() => {
     tg.MainButton.setParams({
-      text: 'Malumotlarni Yuborish',
+      text: "Malumotlarni Yuborish",
     });
   }, [tg]);
 
@@ -39,25 +55,27 @@ function Form() {
   return (
     <div className="form">
       <h3>Malumotlaringizni kirgizing</h3>
-      <input
-        type="text"
-        className="input"
-        placeholder="Shahar"
-        value={country}
-        onChange={onChangeCountry}
-      />
-      <input
-        type="text"
-        className="input"
-        placeholder="Ko'cha"
-        value={street}
-        onChange={onChangeStreet}
-      />
+      <div>
+        <input
+          type="text"
+          className="input"
+          placeholder="Shahar"
+          value={country}
+          onChange={onChangeCountry}
+        />
+        <input
+          type="text"
+          className="input"
+          placeholder="Ko'cha"
+          value={street}
+          onChange={onChangeStreet}
+        />
 
-      <select className="select" value={subgact} onChange={onChangeSubgact}>
-        <option value="physical">Jismoniy Shahs</option>
-        <option value="legal">Yuridik Shahs</option>
-      </select>
+        <select className="select" value={subgact} onChange={onChangeSubgact}>
+          <option value="physical">Jismoniy Shahs</option>
+          <option value="legal">Yuridik Shahs</option>
+        </select>
+      </div>
     </div>
   );
 }

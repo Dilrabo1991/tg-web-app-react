@@ -3,14 +3,24 @@
   flex-direction: column;
   width: 100%;
   padding: 20px;
+  box-sizing: border-box;
+  background: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+  outline: none;
 }
 .input {
-  width: 80%;
+  width: 100%;
   padding: 10px;
   margin-top: 15px;
+  background: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+  outline: none;
 }
 .select {
-  width: 81.5%;
+  width: 100%;
   padding: 10px;
   margin-top: 15px;
+  background: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+  outline: none;
 }
